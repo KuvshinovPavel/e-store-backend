@@ -4,6 +4,7 @@ import { Customer } from "../customers/customers.model";
 
 interface CartsAttributes {
   customerId: number;
+  name: string;
 }
 
 
@@ -12,9 +13,14 @@ export class Cart extends Model<Cart, CartsAttributes> {
   @Column({ primaryKey: true, unique: true, autoIncrement: true, type: DataType.INTEGER })
   id: number;
 
-  @ForeignKey(() => Customer)
-  @Column({ type: DataType.INTEGER, allowNull: false, unique: true })
-  customerId: number;
+  @Column({ type: DataType.STRING })
+  name: string;
+
+
+  //FIXME add products[]
+  // @ForeignKey(() => Customer)
+  // @Column({ type: DataType.INTEGER, allowNull: false, unique: true })
+  // customerId: number;
 
 
 }

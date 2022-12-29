@@ -1,7 +1,8 @@
-import { BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import { Role } from "../roles/roles.model";
 import { CustomerRoles } from "../roles/customer-roles.model";
 import { Comment } from "../comments/comments.model";
+import { Cart } from "../carts/carts.model";
 
 interface CustomerAttributes {
   firstname: string;
@@ -35,6 +36,11 @@ export class Customer extends Model<Customer, CustomerAttributes> {
   @BelongsToMany(() => Role, () => CustomerRoles)
   roles: Role[];
 
+  @BelongsTo(()=>Cart)
+  cart: Cart;
+
+  @ForeignKey(()=>Cart)
+  cartId:number
 //   @HasMany(()=>Comment)
 // comments: Comment
 

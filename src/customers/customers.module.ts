@@ -8,6 +8,7 @@ import { Role } from "../roles/roles.model";
 import { CustomerRoles } from "../roles/customer-roles.model";
 import { Comment } from "../comments/comments.model";
 import { RolesModule } from "../roles/roles.module";
+import { Cart } from "../carts/carts.model";
 
 @Module({
   providers: [CustomersService],
@@ -15,7 +16,7 @@ import { RolesModule } from "../roles/roles.module";
   imports: [
     forwardRef(() => AuthModule),
     RolesModule,
-    SequelizeModule.forFeature([Customer, Role, CustomerRoles, Comment])
+    SequelizeModule.forFeature([Customer, Role, CustomerRoles, Comment, Cart])
   ],
   exports: [CustomersService]
 })
